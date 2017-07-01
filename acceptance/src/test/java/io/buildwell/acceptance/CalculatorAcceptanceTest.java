@@ -1,6 +1,7 @@
 package io.buildwell.acceptance;
 
 import io.buildwell.foundation.Calculator;
+import io.buildwell.foundation.Result;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,7 +11,7 @@ public class CalculatorAcceptanceTest {
 
     @Test
     public void shouldAddNegativeNumbers() {
-        int actual = calc.add(-1, 200);
-        assertEquals(199, actual);
+        Result actual = calc.add(-1, 200);
+        assertEquals(199, actual.getValue());
     }
 }
