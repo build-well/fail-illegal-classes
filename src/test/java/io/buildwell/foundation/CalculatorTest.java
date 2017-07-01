@@ -9,8 +9,8 @@ public class CalculatorTest {
 
     @Test
     public void shouldAddIntegers() {
-        int actual = calc.add(3, 5);
-        assertEquals(8, actual);
+        Result actual = calc.add(3, 5);
+        assertEquals(8, actual.getValue());
     }
 
 }

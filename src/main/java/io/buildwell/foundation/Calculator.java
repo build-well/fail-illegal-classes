@@ -1,7 +1,7 @@
 package io.buildwell.foundation;
 
 public class Calculator {
-    public int add(int a, int b) {
-        return a + b;
+    public Result add(int a, int b) {
+        return Result.now(a + b);
     }
 }
