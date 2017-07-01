@@ -1,11 +1,19 @@
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'checkstyle'
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
+        checkstyle 'com.puppycrawl.tools:checkstyle:7.8.2'
         testCompile 'junit:junit:4.12'
+    }
+
+    tasks.withType(Checkstyle) {
+        def path = "${rootProject.projectDir}/config/checkstyle/checkstyle.xml"
+
+        config resources.text.fromFile(path)
     }
 }
