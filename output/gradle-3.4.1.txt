@@ -1,0 +1,78 @@
++ OPTIONS='--console=plain --no-daemon'
++ uname -a
+Darwin steves-imac.lan 16.6.0 Darwin Kernel Version 16.6.0: Fri Apr 14 16:21:16 PDT 2017; root:xnu-3789.60.24~6/RELEASE_X86_64 x86_64
++ date
+Sat Jul  1 23:00:48 PDT 2017
++ ./gradlew --console=plain --no-daemon --version
+
+------------------------------------------------------------
+Gradle 3.4.1
+------------------------------------------------------------
+
+Build time:   2017-03-03 19:45:41 UTC
+Revision:     9eb76efdd3d034dc506c719dac2955efb5ff9a93
+
+Groovy:       2.4.7
+Ant:          Apache Ant(TM) version 1.9.6 compiled on June 29 2015
+JVM:          1.8.0_131 (Oracle Corporation 25.131-b11)
+OS:           Mac OS X 10.12.5 x86_64
+
++ ./gradlew --console=plain --no-daemon projects
+:projects
+
+------------------------------------------------------------
+Root project
+------------------------------------------------------------
+
+Root project 'fail-unwanted-classes'
+No sub-projects
+
+To see a list of the tasks of a project, run gradlew <project-path>:tasks
+For example, try running gradlew :tasks
+
+BUILD SUCCESSFUL
+
+Total time: 2.638 secs
++ ./gradlew --console=plain --no-daemon dependencies --configuration checkstyle
+:dependencies
+
+------------------------------------------------------------
+Root project
+------------------------------------------------------------
+
+checkstyle - The Checkstyle libraries to be used for this project.
+\--- com.puppycrawl.tools:checkstyle:7.8.2
+     +--- antlr:antlr:2.7.7
+     +--- org.antlr:antlr4-runtime:4.7
+     +--- commons-beanutils:commons-beanutils:1.9.3
+     |    \--- commons-collections:commons-collections:3.2.2
+     +--- commons-cli:commons-cli:1.4
+     \--- com.google.guava:guava:21.0
+
+BUILD SUCCESSFUL
+
+Total time: 2.353 secs
++ echo '*** *** *** *** *** ***'
+*** *** *** *** *** ***
++ ./gradlew --console=plain --no-daemon clean build
+:clean
+:compileJava
+:processResources NO-SOURCE
+:classes
+:jar
+:assemble
+:checkstyleMain[ant:checkstyle] [ERROR] /Users/sghill/code/build-well/fail-unwanted-classes/src/main/java/io/buildwell/foundation/Result.java:3:1: Illegal import - java.util.Date. [IllegalImport]
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':checkstyleMain'.
+> Checkstyle rule violations were found. See the report at: file:///Users/sghill/code/build-well/fail-unwanted-classes/build/reports/checkstyle/main.html
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 3.821 secs
