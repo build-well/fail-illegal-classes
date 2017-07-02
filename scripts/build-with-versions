@@ -7,6 +7,7 @@ uname -a
 date
 ./gradlew $OPTIONS --version
 ./gradlew $OPTIONS projects
+./gradlew $OPTIONS dependencies --configuration checkstyle
 
 echo "*** *** *** *** *** ***"
 
